@@ -1,0 +1,213 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{GRA-Swarm-Engine: Resonance-Based Swarm Intelligence for Emergent Multi-Agent Optimization}
+
+\author{
+Oleg Bitsoev\\ 
+Independent Researcher \\
+\texttt{https://github.com/qqewq}
+}
+
+\date{2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+This work introduces \textbf{GRA-Swarm-Engine}, an experimental multi-agent framework designed to investigate emergent collective intelligence through resonance-driven swarm dynamics.
+
+The system combines concepts from swarm intelligence, evolutionary algorithms, and resonance-based state amplification. Agents explore a shared solution space while interacting through a General Resonance Algorithm (GRA) that promotes coherent agent states.
+
+We hypothesize that large-scale resonant swarms may produce emergent problem-solving behaviors and serve as a foundation for decentralized artificial intelligence architectures.
+
+\end{abstract}
+
+\section{Introduction}
+
+Traditional artificial intelligence systems rely on large centralized models trained on massive datasets. While effective, this paradigm differs significantly from biological intelligence, which often emerges from distributed interacting components.
+
+Swarm intelligence provides an alternative computational paradigm in which simple agents interact locally to produce global intelligent behavior.
+
+In this work we introduce \textbf{GRA-Swarm-Engine}, a research framework that explores how:
+
+\begin{itemize}
+\item multiple agents explore a shared state space
+\item agent states interact through resonance
+\item swarm dynamics amplify coherent solutions
+\item collective intelligence emerges from decentralized interactions
+\end{itemize}
+
+The project provides a minimal experimental implementation of this architecture.
+
+\section{System Architecture}
+
+The system consists of a swarm of agents:
+
+\[
+s_i \in S
+\]
+
+where:
+
+\begin{itemize}
+\item \(s_i\) represents the state of agent \(i\)
+\item \(S\) is the solution or hypothesis space
+\end{itemize}
+
+Each iteration of the swarm performs the following steps:
+
+\begin{enumerate}
+\item agents generate candidate states
+\item resonance between agents is evaluated
+\item agents receive scores based on resonance
+\item the swarm evolves via selection and mutation
+\end{enumerate}
+
+This process produces a dynamic adaptive swarm capable of exploring complex solution spaces.
+
+\section{Resonance Mechanism}
+
+The core idea of the GRA-Swarm system is the resonance between agent states.
+
+Given two agents \(i\) and \(j\):
+
+\[
+R(i,j) = similarity(s_i, s_j)
+\]
+
+In the current implementation, similarity is measured using cosine similarity:
+
+\[
+R(i,j) =
+\frac{s_i \cdot s_j}
+{\|s_i\| \|s_j\|}
+\]
+
+The total resonance score for an agent is:
+
+\[
+A_i = \sum_{j} R(i,j)
+\]
+
+Agents with higher resonance scores are considered more aligned with the swarm.
+
+\section{Swarm Evolution}
+
+The swarm evolves according to a simple evolutionary mechanism.
+
+First, agents are ranked by resonance score:
+
+\[
+A_1, A_2, ..., A_n
+\]
+
+The top-performing agents are selected:
+
+\[
+S_{top} = \{s_1, s_2, ..., s_k\}
+\]
+
+New agents are generated through mutation:
+
+\[
+s'_i = s_i + \epsilon
+\]
+
+where \(\epsilon\) is a small stochastic perturbation.
+
+This evolutionary process allows the swarm to continuously explore the solution space.
+
+\section{Collective Dynamics}
+
+As the swarm evolves, several collective phenomena may appear:
+
+\begin{itemize}
+\item clustering of agent states
+\item convergence toward stable solutions
+\item distributed exploration of the search space
+\item adaptive swarm behavior
+\end{itemize}
+
+These behaviors resemble properties observed in biological swarms and decentralized systems.
+
+\section{Collective Memory}
+
+The architecture may include a collective memory component that stores high-quality states discovered by the swarm.
+
+Such memory can accumulate:
+
+\begin{itemize}
+\item best-performing states
+\item discovered patterns
+\item effective strategies
+\end{itemize}
+
+Collective memory allows the swarm to retain useful information across iterations.
+
+\section{LLM Swarm Extension}
+
+The GRA-Swarm architecture can be extended with language model agents.
+
+In this configuration:
+
+\begin{enumerate}
+\item agents generate ideas using language models
+\item ideas are evaluated using resonance metrics
+\item the swarm selects and refines promising ideas
+\end{enumerate}
+
+This approach enables a form of distributed reasoning where multiple agents collaboratively explore a solution space.
+
+\section{Experiments}
+
+The GRA-Swarm-Engine repository contains several experimental modules:
+
+\begin{itemize}
+\item swarm optimization simulation
+\item resonance clustering experiments
+\item emergent role experiments
+\item prototype LLM swarm reasoning
+\end{itemize}
+
+These experiments demonstrate basic swarm dynamics and provide a foundation for further research.
+
+\section{Future Work}
+
+Several research directions remain open:
+
+\begin{itemize}
+\item large-scale swarms with thousands of agents
+\item adaptive resonance functions
+\item meta-optimization of swarm parameters
+\item integration with advanced language models
+\item decentralized AGI architectures
+\end{itemize}
+
+Exploring these directions may reveal new approaches to distributed intelligence.
+
+\section{Conclusion}
+
+GRA-Swarm-Engine provides a minimal research framework for investigating resonance-based swarm intelligence.
+
+Instead of relying on a single centralized model, the system explores how collective intelligence can emerge from many interacting agents.
+
+While preliminary, this architecture suggests that decentralized resonance-based systems may provide a promising direction for future AI research.
+
+\section*{Code}
+
+Implementation:
+
+\[
+\texttt{https://github.com/qqewq/GRA-Swarm-Engine}
+\]
+
+\end{document}
