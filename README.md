@@ -1,3 +1,5 @@
+https://orcid.org/my-orcid?orcid=0009-0004-1872-1153
+https://doi.org/10.5281/zenodo.18907050
 # GRA-Swarm-Engine
 
 GRA-Swarm-Engine is an experimental research framework for **swarm-based collective intelligence** using a **GRA resonance principle**.
