@@ -1,0 +1,276 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{Theoretical Foundations of GRA-Swarm Systems}
+\author{Oleg Bitsoev}
+\date{2026}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+This document provides theoretical foundations for the GRA-Swarm architecture implemented in the GRA-Swarm-Engine repository.
+
+The goal is to formalize the dynamics of resonance-driven multi-agent systems and analyze their collective behavior.
+
+\section{Agent State Space}
+
+Let
+
+\[
+S \subset \mathbb{R}^d
+\]
+
+be a continuous state space.
+
+Each agent \(i\) has state
+
+\[
+s_i \in S
+\]
+
+The swarm consists of \(N\) agents:
+
+\[
+\mathcal{A} = \{s_1, s_2, ..., s_N\}
+\]
+
+\section{Resonance Function}
+
+\begin{definition}[Resonance]
+
+Resonance between agents \(i\) and \(j\) is defined as
+
+\[
+R(i,j) = f(s_i, s_j)
+\]
+
+where \(f\) is a similarity function.
+
+\end{definition}
+
+In practice we use cosine similarity:
+
+\[
+R(i,j) =
+\frac{s_i \cdot s_j}{\|s_i\|\|s_j\|}
+\]
+
+The resonance matrix is therefore
+
+\[
+R \in \mathbb{R}^{N \times N}
+\]
+
+\section{Amplification Dynamics}
+
+Each agent receives an amplification score
+
+\[
+A_i = \sum_{j=1}^{N} R(i,j)
+\]
+
+Agents with larger \(A_i\) are more aligned with the swarm.
+
+This quantity represents the collective support for a given state.
+
+\section{Swarm Evolution Operator}
+
+Let
+
+\[
+F : S^N \rightarrow S^N
+\]
+
+be the swarm evolution operator.
+
+One iteration of the system consists of:
+
+\begin{enumerate}
+
+\item computing resonance scores \(A_i\)
+
+\item selecting top agents
+
+\item generating mutated agents
+
+\end{enumerate}
+
+Formally,
+
+\[
+s_i' = s_{\pi(i)} + \epsilon
+\]
+
+where
+
+\begin{itemize}
+
+\item \(\pi(i)\) selects a high scoring agent
+\item \(\epsilon\) is stochastic mutation
+
+\end{itemize}
+
+\section{Resonance Graph Interpretation}
+
+The swarm can be interpreted as a weighted graph:
+
+\[
+G = (V,E)
+\]
+
+where
+
+\begin{itemize}
+
+\item vertices represent agents
+\item edges represent resonance strength
+\end{itemize}
+
+Edge weight:
+
+\[
+w_{ij} = R(i,j)
+\]
+
+This graph evolves dynamically as agents mutate.
+
+\section{Spectral Structure}
+
+The resonance matrix \(R\) may exhibit spectral structure.
+
+Let
+
+\[
+\lambda_1 \ge \lambda_2 \ge ... \ge \lambda_N
+\]
+
+be eigenvalues of \(R\).
+
+Large eigenvalues indicate coherent clusters of agents.
+
+These clusters correspond to regions of consensus in the swarm.
+
+\section{Emergent Clustering}
+
+\begin{proposition}
+
+If the swarm repeatedly selects high resonance agents, clusters of aligned states will form in the state space.
+
+\end{proposition}
+
+\textbf{Sketch:}
+
+Selection favors states with high similarity to others. Mutation introduces local exploration around these states, gradually forming clusters.
+
+\section{Stability Hypothesis}
+
+\begin{theorem}[Informal]
+
+If mutation magnitude is bounded and resonance selection pressure is strong, the swarm converges toward a small number of stable clusters.
+
+\end{theorem}
+
+These clusters represent stable solution families.
+
+\section{Collective Intelligence Hypothesis}
+
+We define collective intelligence in the swarm as the emergence of global search efficiency exceeding that of individual agents.
+
+\begin{definition}
+
+Collective intelligence occurs when
+
+\[
+E_{swarm} > E_{individual}
+\]
+
+where \(E\) measures problem-solving efficiency.
+
+\end{definition}
+
+This may occur due to:
+
+\begin{itemize}
+
+\item distributed exploration
+\item information sharing via resonance
+\item evolutionary selection
+
+\end{itemize}
+
+\section{Extension to Language Agents}
+
+If agent states represent language outputs, we obtain a reasoning swarm.
+
+Each agent produces a hypothesis:
+
+\[
+h_i
+\]
+
+Resonance is computed over semantic similarity:
+
+\[
+R(i,j) = similarity(h_i,h_j)
+\]
+
+The swarm therefore performs:
+
+\begin{itemize}
+
+\item hypothesis generation
+\item hypothesis alignment
+\item evolutionary refinement
+\end{itemize}
+
+This produces a form of collective reasoning.
+
+\section{Large Scale Swarms}
+
+For large \(N\), the swarm approaches a continuous distribution:
+
+\[
+\rho(s,t)
+\]
+
+The evolution may be approximated by a stochastic dynamical system.
+
+Future work may explore:
+
+\begin{itemize}
+
+\item mean-field approximations
+\item swarm thermodynamics
+\item phase transitions in swarm intelligence
+\end{itemize}
+
+\section{Conclusion}
+
+This document outlined a theoretical model of resonance-driven swarm systems.
+
+The GRA-Swarm architecture can be interpreted as a dynamical system combining:
+
+\begin{itemize}
+
+\item similarity-based interaction
+\item evolutionary selection
+\item stochastic exploration
+\end{itemize}
+
+Such systems may provide a useful framework for studying emergent distributed intelligence.
+
+\end{document}
